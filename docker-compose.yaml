@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  imgproxy:
+    image: darthsim/imgproxy:v2.17
+    ports:
+      - 8080:8080
+    restart: always
+    environment:
+      - IMGPROXY_CONCURRENCY=1
+      - IMGPROXY_USE_ETAG=true
+
+  thumbor:
+    image: minimalcompact/thumbor:7.0.0a5
+    ports:
+      - 8081:80
+    restart: always
+
+  thumbor-cache:
+    image: minimalcompact/thumbor:7.0.0a5
+    ports:
+      - 8082:80
+    restart: always
+    environment:
+      - RESULT_STORAGE_EXPIRATION_SECONDS=3600
+      - RESULT_STORAGE_FILE_STORAGE_ROOT_PATH=/tmp/thumbor/result_storage
+      - RESULT_STORAGE_STORES_UNSAFE=True
+      - RESULT_STORAGE=thumbor.result_storages.file_storage
+
+  imaginary:
+    image: h2non/imaginary:1.2.4
+    command: -enable-url-source -cpus 1 -concurrency 1 -burst 1000
+    ports:
+      - 8083:80
+    restart: always
+    environment:
+      PORT: 80
+
+  picfit:
+    build:
+      context: .
+      dockerfile: ./.docker/picfit/Dockerfile
+    ports:
+      - 8084:3001
+    restart: always
+    environment:
+      - PICFIT_CONFIG_PATH=/config.json
+
+  picfit-cache:
+    build:
+      context: .
+      dockerfile: ./.docker/picfit/Dockerfile
+    ports:
+      - 8085:3001
+    restart: always
+    environment:
+      - PICFIT_CONFIG_PATH=/config_cache.json
+
+  imageproxy:
+    image: willnorris/imageproxy:latest
+    ports:
+      - 8086:8080
+    restart: always
+
+  imageproxy-cache:
+    image: willnorris/imageproxy:latest
+    ports:
+      - 8087:8080
+    environment:
+      - IMAGEPROXY_CACHE=memory:100:24h
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.10.10.0/24
