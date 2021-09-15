@@ -29,7 +29,7 @@ services:
 
   imaginary:
     image: h2non/imaginary:1.2.4
-    command: -enable-url-source -cpus 1 -concurrency 1 -burst 1000
+    command: -enable-url-source -cpus 1
     ports:
       - 8083:80
     restart: always
