@@ -72,6 +72,12 @@ services:
       - IMAGEPROXY_CACHE=memory:100:24h
       - IMAGEPROXY_SCALEUP=true
 
+  weserv-images:
+    image: ghcr.io/weserv/images:5.x
+    ports:
+      - 8088:80
+    restart: always
+
 networks:
   default:
     driver: bridge
