@@ -53,7 +53,6 @@ Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtr
 
 
 |             | imgproxy/imgproxy          | thumbor/thumbor            | thumbor/thumbor (cache)    | imaginary                  | picfit                     | picfit (with  cache)      | imageproxy                 | imageproxy (With cache)    | weserv/images (without cache) | weserv/images             |
-
 | ----------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | ------------------------- | -------------------------- | -------------------------- | ----------------------------- | ------------------------- |
 | 320x240     | 71.90ms (14.02 rps, 60MB)  | 90.51ms (11.09 rps, 60MB)  | 1.79ms (893.27 rps, 50MB)  | 69.55ms (14.48 rps, 200MB) | 238.91ms (4.18 rps, 50MB)  | 8.23ms (922.42 rps, 40MB) | 226.29ms (4.41 rps, 60MB)  | 2.41ms (3207.52 rps, 40MB) | 0.5ms (5242.17 rps, 40MB)     | 70.28ms (14.28 rps, 45MB) |
 | 854x480     | 105.17ms (9.55 rps, 65MB)  | 84.06ms (11.93 rps, 65MB)  | 1.33ms (754.58 rps, 50MB)  | 89.84ms (11.19 rps, 320MB) | 303.05ms (3.29 rps, 60MB)  | 4.56ms (490.97 rps, 40MB) | 295.18ms (3.38 rps, 70MB)  | 1.63ms (1998.03 rps, 40MB) | 0.6ms (3921.71 rps, 40MB)     | 111.55ms (9.06 rps, 55MB) |
