@@ -51,12 +51,15 @@ Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtr
 ```
 
 
-|             | imgproxy                   | thumbor                    | thumbor (with `file_storage` cache) | imaginary                  | picfit                     | picfit (with `fs` cache)  | imageproxy                 | imageproxy (with `in memory` cache) | weserv/images              | weserv/images (without `nginx` cache) |
-| ----------- | -------------------------- | -------------------------- | ----------------------------------- | -------------------------- | -------------------------- | ------------------------- | -------------------------- | ----------------------------------- | -------------------------- | ------------------------------------- |
-| 320x240     | 71.90ms (14.02 rps, 60MB)  | 90.51ms (11.09 rps, 60MB)  | 1.79ms (893.27 rps, 50MB)           | 69.55ms (14.48 rps, 200MB) | 238.91ms (4.18 rps, 50MB)  | 8.23ms (922.42 rps, 40MB) | 226.29ms (4.41 rps, 60MB)  | 2.41ms (3207.52 rps, 40MB)          | 0.5ms (5242.17 rps, 40MB)  | 70.28ms (14.28 rps, 45MB)             |
-| 854x480     | 105.17ms (9.55 rps, 65MB)  | 84.06ms (11.93 rps, 65MB)  | 1.33ms (754.58 rps, 50MB)           | 89.84ms (11.19 rps, 320MB) | 303.05ms (3.29 rps, 60MB)  | 4.56ms (490.97 rps, 40MB) | 295.18ms (3.38 rps, 70MB)  | 1.63ms (1998.03 rps, 40MB)          | 0.6ms (3921.71 rps, 40MB)  | 111.55ms (9.06 rps, 55MB)             |
-| 1280x720    | 168.57ms (5.94 rps, 70MB)  | 186.55ms (5.34 rps, 70MB)  | 2.24ms (595.12 rps, 50MB)           | 104.65ms (9.58 rps, 380MB) | 345.35ms (2.88 rps, 80MB)  | 6.31ms (320.05 rps, 50MB) | 373.96ms (2.68 rps, 80MB)  | 2.40ms (1296.11 rps, 40MB)          | 1.34ms (2647.82 rps, 40MB) | 198.45ms (5.03 rps, 65MB)             |
-| 3840x2160   | 669.91ms (1.48 rps, 100MB) | 855.83ms (1.17 rps, 120MB) | 14.35ms (202.75 rps, 65MB)          | 509.45ms (1.95 rps, 500MB) | 956.23ms (1.03 rps, 150MB) | 47.13ms (72.27 rps, 70MB) | 1250.0ms (0.80 rps, 150MB) | 22.20ms (309.14 rps, 50MB)          | 4.27ms (901.96 rps, 40MB)  | 1020.0ms (0.97 rps, 90MB)             |
+
+|             | imgproxy/imgproxy          | thumbor/thumbor            | thumbor/thumbor (cache)    | imaginary                  | picfit                     | picfit (with  cache)      | imageproxy                 | imageproxy (With cache)    | weserv/images (without cache) | weserv/images             |
+
+| ----------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | ------------------------- | -------------------------- | -------------------------- | ----------------------------- | ------------------------- |
+| 320x240     | 71.90ms (14.02 rps, 60MB)  | 90.51ms (11.09 rps, 60MB)  | 1.79ms (893.27 rps, 50MB)  | 69.55ms (14.48 rps, 200MB) | 238.91ms (4.18 rps, 50MB)  | 8.23ms (922.42 rps, 40MB) | 226.29ms (4.41 rps, 60MB)  | 2.41ms (3207.52 rps, 40MB) | 0.5ms (5242.17 rps, 40MB)     | 70.28ms (14.28 rps, 45MB) |
+| 854x480     | 105.17ms (9.55 rps, 65MB)  | 84.06ms (11.93 rps, 65MB)  | 1.33ms (754.58 rps, 50MB)  | 89.84ms (11.19 rps, 320MB) | 303.05ms (3.29 rps, 60MB)  | 4.56ms (490.97 rps, 40MB) | 295.18ms (3.38 rps, 70MB)  | 1.63ms (1998.03 rps, 40MB) | 0.6ms (3921.71 rps, 40MB)     | 111.55ms (9.06 rps, 55MB) |
+| 1280x720    | 168.57ms (5.94 rps, 70MB)  | 186.55ms (5.34 rps, 70MB)  | 2.24ms (595.12 rps, 50MB)  | 104.65ms (9.58 rps, 380MB) | 345.35ms (2.88 rps, 80MB)  | 6.31ms (320.05 rps, 50MB) | 373.96ms (2.68 rps, 80MB)  | 2.40ms (1296.11 rps, 40MB) | 1.34ms (2647.82 rps, 40MB)    | 198.45ms (5.03 rps, 65MB) |
+| 1920x1080   | 669.91ms (1.48 rps, 100MB) | 855.83ms (1.17 rps, 120MB) | 14.35ms (202.75 rps, 65MB) | 509.45ms (1.95 rps, 500MB) | 956.23ms (1.03 rps, 150MB) | 47.13ms (72.27 rps, 70MB) | 1250.0ms (0.80 rps, 150MB) | 22.20ms (309.14 rps, 50MB) | 4.27ms (901.96 rps, 40MB)     | 1020.0ms (0.97 rps, 90MB) |
+| 3840x2160   | 669.91ms (1.48 rps, 100MB) | 855.83ms (1.17 rps, 120MB) | 14.35ms (202.75 rps, 65MB) | 509.45ms (1.95 rps, 500MB) | 956.23ms (1.03 rps, 150MB) | 47.13ms (72.27 rps, 70MB) | 1250.0ms (0.80 rps, 150MB) | 22.20ms (309.14 rps, 50MB) | 4.27ms (901.96 rps, 40MB)     | 1020.0ms (0.97 rps, 90MB) |
 
 
 ![https://quickchart.io/sandbox/#%7B%0A%20%20%22type%22%3A%20%22horizontalBar%22%2C%0A%20%20%22data%22%3A%20%7B%0A%20%20%20%20%22labels%22%3A%20%5B%0A%20%20%20%20%20%20%22imgproxy%22%2C%0A%20%20%20%20%20%20%22thumbor%22%2C%0A%20%20%20%20%20%20%22thumbor%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22imaginary%22%2C%0A%20%20%20%20%20%20%22picfit%22%2C%0A%20%20%20%20%20%20%22picfit%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22imageproxy%22%2C%0A%20%20%20%20%20%20%22imageproxy%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22weserv%2Fimages%22%2C%0A%20%20%20%20%20%20%22weserv%2Fimages%20(without%20cache)%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22datasets%22%3A%20%5B%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%22320x240%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgba(54%2C%20162%2C%20235%2C%200.5)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(54%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%2071.90%2C%0A%20%20%20%20%20%20%20%20%20%2090.51%2C%0A%20%20%20%20%20%20%20%20%20%201.79%2C%0A%20%20%20%20%20%20%20%20%20%2069.55%2C%0A%20%20%20%20%20%20%20%20%20%20238.91%2C%0A%20%20%20%20%20%20%20%20%20%208.23%2C%0A%20%20%20%20%20%20%20%20%20%20226.29%2C%0A%20%20%20%20%20%20%20%20%20%202.41%2C%0A%20%20%20%20%20%20%20%20%20%200.5%2C%0A%20%20%20%20%20%20%20%20%20%2070.28%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%22854x480%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgba(255%2C%2099%2C%20132%2C%200.5)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(255%2C%2099%2C%20132)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20105.17%2C%0A%20%20%20%20%20%20%20%20%20%2084.06%2C%0A%20%20%20%20%20%20%20%20%20%201.33%2C%0A%20%20%20%20%20%20%20%20%20%2089.84%2C%0A%20%20%20%20%20%20%20%20%20%20303.05%2C%0A%20%20%20%20%20%20%20%20%20%204.56%2C%0A%20%20%20%20%20%20%20%20%20%20295.18%2C%0A%20%20%20%20%20%20%20%20%20%201.63%2C%0A%20%20%20%20%20%20%20%20%20%200.6%2C%0A%20%20%20%20%20%20%20%20%20%20111.55%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%221280x720%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgb(201%2C%20203%2C%20207)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(154%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20168.57%2C%0A%20%20%20%20%20%20%20%20%20%20186.55%2C%0A%20%20%20%20%20%20%20%20%20%202.24%2C%0A%20%20%20%20%20%20%20%20%20%20104.65%2C%0A%20%20%20%20%20%20%20%20%20%20345.35%2C%0A%20%20%20%20%20%20%20%20%20%206.31%2C%0A%20%20%20%20%20%20%20%20%20%20373.96%2C%0A%20%20%20%20%20%20%20%20%20%202.40%2C%0A%20%20%20%20%20%20%20%20%20%201.34%2C%0A%20%20%20%20%20%20%20%20%20%20198.45%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%223840x2160%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgb(50%2C%20163%2C%20177)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(154%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20669.91%2C%0A%20%20%20%20%20%20%20%20%20%20855.83%2C%0A%20%20%20%20%20%20%20%20%20%2014.35%2C%0A%20%20%20%20%20%20%20%20%20%20509.45%2C%0A%20%20%20%20%20%20%20%20%20%20956.23%2C%0A%20%20%20%20%20%20%20%20%20%2047.13%2C%0A%20%20%20%20%20%20%20%20%20%201250.0%2C%0A%20%20%20%20%20%20%20%20%20%2022.20%2C%0A%20%20%20%20%20%20%20%20%20%204.27%2C%0A%20%20%20%20%20%20%20%20%20%201020.0%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%0A%20%20%7D%2C%0A%20%20%22options%22%3A%20%7B%0A%20%20%20%20%22plugins%22%3A%20%7B%0A%20%20%20%20%20%20%22datalabels%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22anchor%22%3A%20%22end%22%2C%0A%20%20%20%20%20%20%20%20%22align%22%3A%20%22end%22%2C%0A%20%20%20%20%20%20%20%20%22color%22%3A%20%22%23000%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22responsive%22%3A%20true%2C%0A%20%20%20%20%22legend%22%3A%20%7B%0A%20%20%20%20%20%20%22position%22%3A%20%22top%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22title%22%3A%20%7B%0A%20%20%20%20%20%20%22display%22%3A%20true%2C%0A%20%20%20%20%20%20%22text%22%3A%20%22Rendering%20time%20in%20milliseconds%20(lower%20is%20better)%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D](./chart-time.png)
@@ -66,107 +69,151 @@ Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtr
 ![https://quickchart.io/sandbox/#%7B%0A%20%20%22type%22%3A%20%22horizontalBar%22%2C%0A%20%20%22data%22%3A%20%7B%0A%20%20%20%20%22labels%22%3A%20%5B%0A%20%20%20%20%20%20%22imgproxy%22%2C%0A%20%20%20%20%20%20%22thumbor%22%2C%0A%20%20%20%20%20%20%22thumbor%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22imaginary%22%2C%0A%20%20%20%20%20%20%22picfit%22%2C%0A%20%20%20%20%20%20%22picfit%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22imageproxy%22%2C%0A%20%20%20%20%20%20%22imageproxy%20(with%20cache)%22%2C%0A%20%20%20%20%20%20%22weserv%2Fimages%22%2C%0A%20%20%20%20%20%20%22weserv%2Fimages%20(without%20cache)%22%2C%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22datasets%22%3A%20%5B%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%22320x240%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgba(54%2C%20162%2C%20235%2C%200.5)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(54%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%2014.02%2C%0A%20%20%20%20%20%20%20%20%20%2011.09%2C%0A%20%20%20%20%20%20%20%20%20%20893.27%2C%0A%20%20%20%20%20%20%20%20%20%2014.48%2C%0A%20%20%20%20%20%20%20%20%20%204.18%2C%0A%20%20%20%20%20%20%20%20%20%20922.42%2C%0A%20%20%20%20%20%20%20%20%20%204.41%2C%0A%20%20%20%20%20%20%20%20%20%203207.52%2C%0A%20%20%20%20%20%20%20%20%20%205242.17%2C%0A%20%20%20%20%20%20%20%20%20%2014.28%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%22854x480%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgba(255%2C%2099%2C%20132%2C%200.5)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(255%2C%2099%2C%20132)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%209.55%2C%0A%20%20%20%20%20%20%20%20%20%2011.93%2C%0A%20%20%20%20%20%20%20%20%20%20754.58%2C%0A%20%20%20%20%20%20%20%20%20%2011.19%2C%0A%20%20%20%20%20%20%20%20%20%203.29%2C%0A%20%20%20%20%20%20%20%20%20%20490.97%2C%0A%20%20%20%20%20%20%20%20%20%203.38%2C%0A%20%20%20%20%20%20%20%20%20%201998.03%2C%0A%20%20%20%20%20%20%20%20%20%203921.71%2C%0A%20%20%20%20%20%20%20%20%20%209.06%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%221280x720%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgb(201%2C%20203%2C%20207)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(154%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%205.94%2C%0A%20%20%20%20%20%20%20%20%20%205.34%2C%0A%20%20%20%20%20%20%20%20%20%20595.12%2C%0A%20%20%20%20%20%20%20%20%20%209.58%2C%0A%20%20%20%20%20%20%20%20%20%202.88%2C%0A%20%20%20%20%20%20%20%20%20%20320.05%2C%0A%20%20%20%20%20%20%20%20%20%202.68%2C%0A%20%20%20%20%20%20%20%20%20%201296.11%2C%0A%20%20%20%20%20%20%20%20%20%202647.82%2C%0A%20%20%20%20%20%20%20%20%20%205.03%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%223840x2160%22%2C%0A%20%20%20%20%20%20%20%20%22backgroundColor%22%3A%20%22rgb(50%2C%20163%2C%20177)%22%2C%0A%20%20%20%20%20%20%20%20%22borderColor%22%3A%20%22rgb(154%2C%20162%2C%20235)%22%2C%0A%20%20%20%20%20%20%20%20%22borderWidth%22%3A%201%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%201.48%2C%0A%20%20%20%20%20%20%20%20%20%201.17%2C%0A%20%20%20%20%20%20%20%20%20%20202.75%2C%0A%20%20%20%20%20%20%20%20%20%201.95%2C%0A%20%20%20%20%20%20%20%20%20%201.03%2C%0A%20%20%20%20%20%20%20%20%20%2072.27%2C%0A%20%20%20%20%20%20%20%20%20%200.80%2C%0A%20%20%20%20%20%20%20%20%20%20309.14%2C%0A%20%20%20%20%20%20%20%20%20%20901.96%2C%0A%20%20%20%20%20%20%20%20%20%200.97%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%0A%20%20%7D%2C%0A%20%20%22options%22%3A%20%7B%0A%20%20%20%20%22plugins%22%3A%20%7B%0A%20%20%20%20%20%20%22datalabels%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22anchor%22%3A%20%22end%22%2C%0A%20%20%20%20%20%20%20%20%22align%22%3A%20%22end%22%2C%0A%20%20%20%20%20%20%20%20%22color%22%3A%20%22%23000%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22responsive%22%3A%20true%2C%0A%20%20%20%20%22legend%22%3A%20%7B%0A%20%20%20%20%20%20%22position%22%3A%20%22top%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22title%22%3A%20%7B%0A%20%20%20%20%20%20%22display%22%3A%20true%2C%0A%20%20%20%20%20%20%22text%22%3A%20%22RPS%20(bigger%20is%20better)%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D](./chart-rps.png)
 
 
-Test image (1920x1080): https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+Test image (5141x3434): https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
 
 Tests based on https://github.com/wg/wrk
+
+[imgproxy/imgproxy](https://github.com/imgproxy/imgproxy):
 ```
-imgproxy:
     320x240
-        ./wrk -t1 -c1 -d60s http://localhost:8080/unsafe/fill/320/240/ce/1/plain/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8080/insecure/rs:fill:320:240/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     854x480
-        ./wrk -t1 -c1 -d60s http://localhost:8080/unsafe/fill/854/480/ce/1/plain/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8080/insecure/rs:fill:854:480/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     1280x720
-        ./wrk -t1 -c1 -d60s http://localhost:8080/unsafe/fill/1280/720/ce/1/plain/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8080/insecure/rs:fill:1280:720/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
+    1920x1080
+        ./wrk -t1 -c1 -d60s http://localhost:8080/insecure/rs:fill:1920:1080/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     3840x2160
-        ./wrk -t1 -c1 -d60s http://localhost:8080/unsafe/fill/3840/2160/ce/1/plain/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8080/insecure/rs:fill:3840:2160/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
+```
 
-thumbor:
+[thumbor/thumbor](https://github.com/thumbor/thumbor):
+```
     320x240
-        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     854x480
-        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     1280x720
-        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
+    1920x1080
+        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     3840x2160
-        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8081/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
 
-thumbor-cache:
+
+With enabled cache:
+
     320x240
-        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     854x480
-        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     1280x720
-        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
+    1920x1080
+        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
     3840x2160
-        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8082/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg
 
-imaginary:
+```
+
+[h2non/imaginary](https://github.com/h2non/imaginary):
+```
     320x240
-        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=320&height=240&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=320&height=240&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     854x480
-        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=854&height=480&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=854&height=480&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     1280x720
-        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=1280&height=720&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=1280&height=720&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
+    1920x1080
+        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=1920&height=1080&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     3840x2160
-        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=3840&height=2160&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8083/enlarge?width=3840&height=2160&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
 
-picfit:
+```
+
+[thoas/picfit](https://github.com/thoas/picfit):
+```
     320x240
-        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     854x480
-        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     1280x720
-        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
+    1920x1080
+        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     3840x2160
-        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8084/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
 
-picfit-cache:
+
+With enabled cache:
+
     320x240
-        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     854x480
-        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     1280x720
-        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
+    1920x1080
+        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
     3840x2160
-        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fnature-wallpaper-1920x1080.jpg'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8085/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'
 
-imageproxy:
+```
+
+[willnorris/imageproxy](https://github.com/willnorris/imageproxy):
+```
     320x240
-        ./wrk -t1 -c1 -d60s http://localhost:8086/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8086/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     854x480
-        ./wrk -t1 -c1 -d60s http://localhost:8086/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8086/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     1280x720
-        ./wrk -t1 -c1 -d60s http://localhost:8086/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8086/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
+    1920x1080
+        ./wrk -t1 -c1 -d60s http://localhost:8086/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     3840x2160
-        ./wrk -t1 -c1 -d60s http://localhost:8086/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8086/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
 
-imageproxy-cache:
+
+With enabled cache:
+
     320x240
-        ./wrk -t1 -c1 -d60s http://localhost:8087/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8087/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     854x480
-        ./wrk -t1 -c1 -d60s http://localhost:8087/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8087/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     1280x720
-        ./wrk -t1 -c1 -d60s http://localhost:8087/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8087/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
+    1920x1080
+        ./wrk -t1 -c1 -d60s http://localhost:8087/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
     3840x2160
-        ./wrk -t1 -c1 -d60s http://localhost:8087/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg
+        ./wrk -t1 -c1 -d60s http://localhost:8087/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg
 
+```
+
+[weserv/images](https://github.com/weserv/images):
+```
 weserv-images:
     320x240
-        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=320&h=240&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=crop'
     854x480
-        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=854&h=480&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=crop'
     1280x720
-        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=1280&h=720&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=crop'
+    1920x1080
+        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=crop'
     3840x2160
-        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=3840&h=2160&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=crop'
 
-weserv-images-without-cache:
+
+With enabled cache:
+
     320x240
-        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=320&h=240&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=cover'
     854x480
-        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=854&h=480&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=cover'
     1280x720
-        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=1280&h=720&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=cover'
+    1920x1080
+        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=cover'
     3840x2160
-        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/nature-wallpaper-1920x1080.jpg&w=3840&h=2160&fit=crop'
+        ./wrk -t1 -c1 -d60s 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=cover'
 ```

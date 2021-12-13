@@ -2,37 +2,24 @@ version: '3.8'
 
 services:
   imgproxy:
-    image: darthsim/imgproxy:v2.17
+    image: darthsim/imgproxy:v3.1.1
     ports:
       - 8080:8080
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
-      - IMGPROXY_CONCURRENCY=1
-      - IMGPROXY_USE_ETAG=true
+      - IMGPROXY_MAX_SRC_RESOLUTION=18.0
 
   thumbor:
     image: minimalcompact/thumbor:7.0.0a5
     ports:
       - 8081:80
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
 
   thumbor-cache:
     image: minimalcompact/thumbor:7.0.0a5
     ports:
       - 8082:80
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
       - RESULT_STORAGE_EXPIRATION_SECONDS=3600
       - RESULT_STORAGE_FILE_STORAGE_ROOT_PATH=/tmp/thumbor/result_storage
@@ -41,14 +28,10 @@ services:
 
   imaginary:
     image: h2non/imaginary:1.2.4
-    command: -enable-url-source -cpus 1
+    command: -enable-url-source
     ports:
       - 8083:80
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
       PORT: 80
 
@@ -59,10 +42,6 @@ services:
     ports:
       - 8084:3001
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
       - PICFIT_CONFIG_PATH=/config.json
 
@@ -73,10 +52,6 @@ services:
     ports:
       - 8085:3001
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
       - PICFIT_CONFIG_PATH=/config_cache.json
 
@@ -85,10 +60,6 @@ services:
     ports:
       - 8086:8080
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
     environment:
       - IMAGEPROXY_SCALEUP=true
 
@@ -101,26 +72,19 @@ services:
       - IMAGEPROXY_SCALEUP=true
 
   weserv-images:
-    image: ghcr.io/weserv/images:5.x
-    ports:
-      - 8088:80
-    restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
-
-  weserv-images-without-cache:
     build:
       context: .
       dockerfile: ./.docker/weserv-images/Dockerfile
     ports:
+      - 8088:80
+    restart: always
+
+  weserv-images-cache:
+    image: ghcr.io/weserv/images:5.x
+    shm_size: 128M
+    ports:
       - 8089:80
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: 1
 
 networks:
   default:
