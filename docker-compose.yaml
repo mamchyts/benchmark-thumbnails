@@ -80,8 +80,9 @@ services:
     restart: always
 
   weserv-images-cache:
-    image: ghcr.io/weserv/images:5.x
-    shm_size: 128M
+    build:
+      context: .
+      dockerfile: ./.docker/weserv-images/Dockerfile.cache
     ports:
       - 8089:80
     restart: always
