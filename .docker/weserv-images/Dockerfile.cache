@@ -1,0 +1,1 @@
+FROM ghcr.io/weserv/images:5.x
