@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   imgproxy:
-    image: darthsim/imgproxy:v3.1.1
+    image: darthsim/imgproxy:v3.6.0
     ports:
       - 8080:8080
     restart: always
@@ -10,7 +10,7 @@ services:
       - IMGPROXY_MAX_SRC_RESOLUTION=18.0
 
   thumbor:
-    image: minimalcompact/thumbor:7.0.0a5
+    image: minimalcompact/thumbor:7.0.0
     ports:
       - 8081:80
     restart: always
@@ -56,7 +56,7 @@ services:
       - PICFIT_CONFIG_PATH=/config_cache.json
 
   imageproxy:
-    image: willnorris/imageproxy:latest
+    image: ghcr.io/willnorris/imageproxy:v0.11.2
     ports:
       - 8086:8080
     restart: always
@@ -64,7 +64,7 @@ services:
       - IMAGEPROXY_SCALEUP=true
 
   imageproxy-cache:
-    image: willnorris/imageproxy:latest
+    image: ghcr.io/willnorris/imageproxy:v0.11.2
     ports:
       - 8087:8080
     environment:
