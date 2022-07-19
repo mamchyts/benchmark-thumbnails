@@ -16,7 +16,7 @@ services:
     restart: always
 
   thumbor-cache:
-    image: minimalcompact/thumbor:7.0.0a5
+    image: minimalcompact/thumbor:7.0.0
     ports:
       - 8082:80
     restart: always
@@ -85,6 +85,14 @@ services:
       dockerfile: ./.docker/weserv-images/Dockerfile.cache
     ports:
       - 8089:80
+    restart: always
+
+  flyimg-build:
+    build:
+      context: .
+      dockerfile: ./.docker/flyimg/Dockerfile
+    ports:
+      - 8090:80
     restart: always
 
 networks:

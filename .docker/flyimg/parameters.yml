@@ -1,0 +1,120 @@
+application_name: Flyimg.io
+
+#debug
+debug: false
+
+#Number of days for header cache expires `max_age`
+header_cache_days: 365
+
+#options separator
+options_separator: ','
+
+#Security: Signature generation
+# security key
+security_key: ''
+# secret Initialization vector(IV)
+security_iv: ''
+
+# restrict domains, false by default
+restricted_domains: false
+
+# if restricted_domains is enabled, put whitelist domains here
+whitelist_domains:
+  - domain-1.com
+  - domain-2.com
+
+# Default storage system is local, to use use AWS S3, change this param to s3
+storage_system: local
+
+#In case storage_system: s3, you need to add those AWS S3 parameters:
+aws_s3:
+  access_id: ''
+  secret_key: ''
+  region: 'eu-central-1'
+  bucket_name: ''
+
+# Number of threads for Imagemagick to use
+thread: 1
+
+#Extra options for the header sent to source image server, as some servers requires the User-Agent.
+header_extra_options: 'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'
+
+#Keys used in url to match options. Ex: q_80,w_200,h_100
+options_keys:
+  moz: mozjpeg
+  q: quality
+  o: output
+  unsh: unsharp
+  sh: sharpen
+  blr: blur
+  fc: face-crop
+  fcp: face-crop-position
+  fb: face-blur
+  w: width
+  h: height
+  c: crop
+  bg: background
+  st: strip
+  ao: auto-orient
+  rz: resize
+  g: gravity
+  f: filter
+  r: rotate
+  sc: scale
+  sf: sampling-factor
+  rf: refresh
+  smc: smart-crop
+  ett: extent
+  par: preserve-aspect-ratio
+  pns: preserve-natural-size
+  webpl: webp-lossless
+  gf: gif-frame
+  e: extract
+  p1x: extract-top-x
+  p1y: extract-top-y
+  p2x: extract-bottom-x
+  p2y: extract-bottom-y
+  pg: page_number
+  tm: time
+  clsp: colorspace
+  mnchr: monochrome
+
+#Default options values
+default_options:
+  mozjpeg: 1
+  quality: 90
+  output: auto
+  unsharp: null
+  sharpen: null
+  blur: null
+  face-crop: 0
+  face-crop-position: 0
+  face-blur: 0
+  width: null
+  height: null
+  crop: null
+  background: null
+  strip: 1
+  auto-orient: 0
+  resize: null
+  gravity: Center
+  filter: Lanczos
+  rotate: null
+  scale: null
+  sampling-factor: 1x1
+  refresh: false
+  smart-crop: false
+  extent: null
+  preserve-aspect-ratio: 1
+  preserve-natural-size: 1
+  webp-lossless: 0
+  gif-frame: 0
+  extract: null
+  extract-top-x: null
+  extract-top-y: null
+  extract-bottom-x: null
+  extract-bottom-y: null
+  page_number: 1
+  time: '00:00:01'
+  colorspace: 'sRGB'
+  monochrome: null
