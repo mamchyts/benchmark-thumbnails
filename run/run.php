@@ -72,8 +72,8 @@ function executeCommands(array $commands): string
             throw new Exception('Invalid output: ' . $outTime);
         }
 
-        $out .= $resolution . ': ' . $cmd . PHP_EOL . PHP_EOL;
-        $out .= trim($matches[2]) . PHP_EOL . PHP_EOL . PHP_EOL . PHP_EOL;
+        $out .= $resolution . PHP_EOL;
+        $out .= trim($matches[2]) . PHP_EOL . PHP_EOL . PHP_EOL;
 
         sleep(3);
     }

@@ -1,0 +1,33 @@
+server:
+  logLevel: "error"
+  accessLogs: true
+  listens:
+    - ":80"
+
+headers:
+  - statusCodes: [200]
+    values:
+      "cache-control": "max-age=84000, public"
+  - statusCodes: [404, 400]
+    values:
+      "cache-control": "max-age=60, public"
+  - statusCodes: [500, 503]
+    values:
+      "cache-control": "max-age=10, public"
+
+buckets:
+    query:
+        keys: # s3 keys for this bucket useful for uploading files
+          - accessKey: "acc"
+            secretAccessKey: "sec"
+        transform:
+            kind: "query"
+            resultKey: "hash"
+        storages:
+            basic:
+                kind: "http"
+                url: "https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/<item>"
+                headers:
+                    "x-mort": 1
+            transform:
+                kind: "noop"

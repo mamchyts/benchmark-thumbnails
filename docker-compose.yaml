@@ -87,12 +87,28 @@ services:
       - 8089:80
     restart: always
 
-  flyimg-build:
+  flyimg:
     build:
       context: .
       dockerfile: ./.docker/flyimg/Dockerfile
     ports:
       - 8090:80
+    restart: always
+
+  mort:
+    build:
+      context: .
+      dockerfile: ./.docker/mort/Dockerfile
+    ports:
+      - 8091:80
+    restart: always
+
+  mort-cache:
+    build:
+      context: .
+      dockerfile: ./.docker/mort/Dockerfile.cache
+    ports:
+      - 8092:80
     restart: always
 
 networks:
