@@ -75,7 +75,7 @@ function executeCommands(array $commands): string
         $out .= $resolution . PHP_EOL;
         $out .= trim($matches[2]) . PHP_EOL . PHP_EOL . PHP_EOL;
 
-        sleep(3);
+        sleep(10);
     }
 
     return $out;
