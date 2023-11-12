@@ -77,9 +77,9 @@ Vulnerabilities:
 | thoas/picfit (cache)           | 1.06ms, 1249.82rps | 1.65ms, 917.67rps  | 3.88ms, 635.90rps  | 4.89ms, 398.98rps   | 10.00ms, 120.1rps  |
 | willnorris/imageproxy          | 1320.0ms, 0.85rps  | 1350.0ms, 0.82rps  | 1440.0ms, 0.75rps  | 1740.0ms, 0.63rps   | 2250.0ms, 0.40rps  |
 | willnorris/imageproxy (cache)  | 0.61ms, 2769.57rps | 0.67ms, 2468.00rp  | 0.94ms, 1537.28rps | 1.38ms, 996.43rps   | 3.74ms, 337.05rps  |
-| weserv/images                  | 260.70ms, 3.58rps  | 316.66ms, 2.83rps  | 411.36ms, 2.21rps  | 820.88ms, 1.21rps   | 1270.0ms, 0.77rps  |
-| weserv/images (cache)          | 2.54ms, 2623.31rps | 3.05ms, 2210.06rps | 3.11ms, 2697.24rps | 21.00ms, 1759.18rps | 49.57ms, 946.39rps |
-| flyimg/flyimg                  |                    |                    |                    |                     |                    |
+| weserv/images                  | 789.31ms, 1.28rps  | 652.32ms, 1.59rps  | 737.88ms, 1.21rps  | 878.87ms, 1.15rps   | 1080.0ms, 0.87rps  |
+| weserv/images (cache)          | 0.25ms, 6562.50rps | 0.26ms, 6315.25rps | 0.27ms, 5964.42rps | 0.34ms, 4506.96rps  | 0.72ms, 946.39rps  |
+| flyimg/flyimg                  | 578.62ms, 1.86rps  | 1170.0ms, 0.93rps  | 1630.0ms, 0.65rps  | 1807.0ms, 0.45rps   | 3400.0ms, 0.22rps  |
 | flyimg/flyimg (cache)          | 18.81ms, 52.24rps  | 21.02ms, 47.60rps  | 22.17ms, 45.11rps  | 27.52ms, 36.29rps   | 34.57ms, 28.87rps  |
 | aldor007/mort                  | 253.60ms, 3.93rps  | 283.46ms, 3.51rps  | 317.36ms, 3.15rps  | 453.88ms, 2.20rps   | 1070.0ms, 0.93rps  |
 | aldor007/mort (cache)          | 1.51ms, 672.97rps  | 2.81ms, 624.45rps  | 10.99ms, 474.07rps | 6.96ms, 357.36rps   | 8.78ms, 114.04rps  |
@@ -91,102 +91,102 @@ Vulnerabilities:
 ## Example of test runs
 
 ### [imgproxy/imgproxy](https://github.com/imgproxy/imgproxy):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8080/insecure/rs:fill:320:240/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8080/insecure/rs:fill:854:480/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8080/insecure/rs:fill:1280:720/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8080/insecure/rs:fill:1920:1080/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8080/insecure/rs:fill:3840:2160/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8080/insecure/rs:fill:320:240/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8080/insecure/rs:fill:854:480/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8080/insecure/rs:fill:1280:720/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8080/insecure/rs:fill:1920:1080/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8080/insecure/rs:fill:3840:2160/el:true/g:ce:0:0/plain/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [thumbor/thumbor](https://github.com/thumbor/thumbor):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8081/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8081/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8081/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8081/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8081/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8081/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8081/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8081/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8081/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8081/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
 
 ### [thumbor/thumbor (cache)](https://github.com/thumbor/thumbor):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8082/unsafe/320x240/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8082/unsafe/854x480/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8082/unsafe/1280x720/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8082/unsafe/1920x1080/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8082/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
 
 ### [h2non/imaginary](https://github.com/h2non/imaginary):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=320&height=240&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=854&height=480&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1280&height=720&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1920&height=1080&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=3840&height=2160&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8083/enlarge?width=320&height=240&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8083/enlarge?width=854&height=480&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8083/enlarge?width=1280&height=720&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8083/enlarge?width=1920&height=1080&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8083/enlarge?width=3840&height=2160&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [thoas/picfit](https://github.com/thoas/picfit):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8084/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8084/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8084/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8084/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8084/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
 
 ### [thoas/picfit (cache)](https://github.com/thoas/picfit):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8085/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8085/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8085/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8085/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8085/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8085/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8085/display?w=854&h=480&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8085/display?w=1280&h=720&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8085/display?w=1920&h=1080&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8085/display?w=3840&h=2160&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
 
 ### [willnorris/imageproxy](https://github.com/willnorris/imageproxy):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8086/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8086/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8086/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8086/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8086/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8086/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8086/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8086/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8086/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8086/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [willnorris/imageproxy (cache)](https://github.com/willnorris/imageproxy):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8087/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8087/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8087/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8087/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8087/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8087/320x240/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8087/854x480/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8087/1280x720/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8087/1920x1080/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8087/3840x2160/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [weserv/images](https://github.com/weserv/images):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=cover'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=cover'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=cover'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=cover'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=cover'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=cover'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=cover'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=cover'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=cover'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8088/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=cover'`
 
 ### [weserv/images (cache)](https://github.com/weserv/images):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=cover'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=cover'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=cover'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=cover'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=cover'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=320&h=240&fit=cover'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=854&h=480&fit=cover'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1280&h=720&fit=cover'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=1920&h=1080&fit=cover'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8089/?url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg&w=3840&h=2160&fit=cover'`
 
 ### [flyimg/flyimg](https://github.com/flyimg/flyimg):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8090/upload/w_320,h_240,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8090/upload/w_854,h_480,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8090/upload/w_1280,h_720,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8090/upload/w_1920,h_1080,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8090/upload/w_3840,h_2160,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8090/upload/w_320,h_240,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8090/upload/w_854,h_480,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8090/upload/w_1280,h_720,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8090/upload/w_1920,h_1080,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8090/upload/w_3840,h_2160,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [flyimg/flyimg (cache)](https://github.com/flyimg/flyimg):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8091/upload/w_320,h_240,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8091/upload/w_854,h_480,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8091/upload/w_1280,h_720,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8091/upload/w_1920,h_1080,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8091/upload/w_3840,h_2160,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8091/upload/w_320,h_240,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8091/upload/w_854,h_480,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8091/upload/w_1280,h_720,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8091/upload/w_1920,h_1080,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8091/upload/w_3840,h_2160,c_1/https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [aldor007/mort](https://github.com/aldor007/mort):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=320&height=240'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=854&height=480'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1280&height=720'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1920&height=1080'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=3840&height=2160'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=320&height=240'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=854&height=480'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1280&height=720'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1920&height=1080'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8092/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=3840&height=2160'`
 
 ### [aldor007/mort (cache)](https://github.com/aldor007/mort):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=320&height=240'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=854&height=480'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1280&height=720'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1920&height=1080'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=3840&height=2160'`
+- **320x240**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=320&height=240'`
+- **854x480**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=854&height=480'`
+- **1280x720**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1280&height=720'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=1920&height=1080'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --timeout 5s --latency 'http://localhost:8093/query/pexels-magda-ehlers.jpg?operation=crop&gravity=center&width=3840&height=2160'`
 
 
 ## PS. Helpers
