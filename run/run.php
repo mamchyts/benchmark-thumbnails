@@ -5,10 +5,8 @@ declare(strict_types=1);
 // parse options from CMD
 $cmdTests = ($argc === 1) ? [] : array_slice($argv, 1);
 
-$testHash = getTestHash($cmdTests);
-
 // run commands
-foreach ($testHash as $title => $commands) {
+foreach (getTestHash($cmdTests) as $title => $commands) {
     echo '----------------------- ' . $title . ' -----------------------' . PHP_EOL;
     echo executeCommands($commands) . PHP_EOL . PHP_EOL . PHP_EOL;
 }
@@ -75,7 +73,7 @@ function executeCommands(array $commands): string
         $out .= $resolution . PHP_EOL;
         $out .= trim($matches[2]) . PHP_EOL . PHP_EOL . PHP_EOL;
 
-        sleep(10);
+        sleep(60);
     }
 
     return $out;
