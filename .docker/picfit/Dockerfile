@@ -1,14 +1,13 @@
-FROM golang:1.16-buster as builder
+FROM golang:1.21-bullseye as builder
 LABEL stage=builder
 
 ENV REPO=thoas/picfit
 
-RUN apt-get update && apt-get install -y unzip
-
-RUN wget -O /tmp/master.zip https://github.com/thoas/picfit/archive/refs/heads/master.zip \
-    && unzip /tmp/master.zip -d /tmp/picfit/ \
+RUN apt-get update && apt-get install -y unzip \
+    && wget -O /tmp/main.zip https://github.com/thoas/picfit/archive/refs/heads/main.zip \
+    && unzip /tmp/main.zip -d /tmp/picfit/ \
     && mkdir -p /go/src/github.com/${REPO} \
-    && cp -r /tmp/picfit/picfit-master/* /go/src/github.com/${REPO}
+    && cp -r /tmp/picfit/picfit-main/* /go/src/github.com/${REPO}
 
 WORKDIR /go/src/github.com/${REPO}
 

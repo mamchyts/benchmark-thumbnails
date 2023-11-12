@@ -1,12 +1,13 @@
 {
-  "port": 3001,
-  "storage": {
-    "src": {
-      "type": "fs",
-      "location": "/var/tmp/"
+    "debug": false,
+    "port": 3001,
+    "storage": {
+        "src": {
+            "type": "fs",
+            "location": "/var/tmp/"
+        }
+    },
+    "kvstore": {
+        "type": "cache"
     }
-  },
-  "kvstore": {
-    "type": "cache"
-  }
 }

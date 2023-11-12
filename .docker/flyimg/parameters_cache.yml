@@ -36,7 +36,7 @@ aws_s3:
 thread: 1
 
 # when set to true the generated image will be deleted from the cache in web/upload and served directly in the response
-disable_cache: true
+disable_cache: false
 
 #Extra options for the header sent to source image server, as some servers requires the User-Agent.
 header_extra_options: 'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'

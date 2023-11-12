@@ -1,119 +1,121 @@
-version: '3.8'
-
 services:
-  imgproxy:
-    image: darthsim/imgproxy:v3.6.0
-    ports:
-      - 8080:8080
-    restart: always
-    environment:
-      - IMGPROXY_MAX_SRC_RESOLUTION=18.0
+    imgproxy:
+        image: darthsim/imgproxy:v3.20.0
+        ports:
+            - 8080:8080
+        restart: always
+        environment:
+            - IMGPROXY_MAX_SRC_RESOLUTION=18.0
 
-  thumbor:
-    image: minimalcompact/thumbor:7.0.0
-    ports:
-      - 8081:80
-    restart: always
+    thumbor:
+        image: ghcr.io/minimalcompact/thumbor:7.6.0
+        ports:
+            - 8081:80
+        restart: always
+        environment:
+            - ALLOW_UNSAFE_URL=True
 
-  thumbor-cache:
-    image: minimalcompact/thumbor:7.0.0
-    ports:
-      - 8082:80
-    restart: always
-    environment:
-      - RESULT_STORAGE_EXPIRATION_SECONDS=3600
-      - RESULT_STORAGE_FILE_STORAGE_ROOT_PATH=/tmp/thumbor/result_storage
-      - RESULT_STORAGE_STORES_UNSAFE=True
-      - RESULT_STORAGE=thumbor.result_storages.file_storage
+    thumbor-cache:
+        image: ghcr.io/minimalcompact/thumbor:7.6.0
+        ports:
+            - 8082:80
+        restart: always
+        environment:
+            - ALLOW_UNSAFE_URL=True
+            - RESULT_STORAGE_EXPIRATION_SECONDS=3600
+            - RESULT_STORAGE_FILE_STORAGE_ROOT_PATH=/tmp/thumbor/result_storage
+            - RESULT_STORAGE_STORES_UNSAFE=True
+            - RESULT_STORAGE=thumbor.result_storages.file_storage
 
-  imaginary:
-    image: h2non/imaginary:1.2.4
-    command: -enable-url-source
-    ports:
-      - 8083:80
-    restart: always
-    environment:
-      PORT: 80
+    imaginary:
+        image: h2non/imaginary:1.2.4
+        command: -enable-url-source
+        ports:
+            - 8083:80
+        restart: always
+        environment:
+            PORT: 80
 
-  picfit:
-    build:
-      context: .
-      dockerfile: ./.docker/picfit/Dockerfile
-    ports:
-      - 8084:3001
-    restart: always
-    environment:
-      - PICFIT_CONFIG_PATH=/config.json
+    picfit:
+        build:
+            context: .
+            dockerfile: ./.docker/picfit/Dockerfile
+        ports:
+            - 8084:3001
+        restart: always
+        environment:
+            - PICFIT_CONFIG_PATH=/config.json
 
-  picfit-cache:
-    build:
-      context: .
-      dockerfile: ./.docker/picfit/Dockerfile
-    ports:
-      - 8085:3001
-    restart: always
-    environment:
-      - PICFIT_CONFIG_PATH=/config_cache.json
+    picfit-cache:
+        build:
+            context: .
+            dockerfile: ./.docker/picfit/Dockerfile
+        ports:
+            - 8085:3001
+        restart: always
+        environment:
+            - PICFIT_CONFIG_PATH=/config_cache.json
 
-  imageproxy:
-    image: ghcr.io/willnorris/imageproxy:v0.11.2
-    ports:
-      - 8086:8080
-    restart: always
-    environment:
-      - IMAGEPROXY_SCALEUP=true
+    imageproxy:
+        image: ghcr.io/willnorris/imageproxy:main
+        ports:
+            - 8086:8080
+        restart: always
+        environment:
+            - IMAGEPROXY_SCALEUP=true
 
-  imageproxy-cache:
-    image: ghcr.io/willnorris/imageproxy:v0.11.2
-    ports:
-      - 8087:8080
-    environment:
-      - IMAGEPROXY_CACHE=memory:100:24h
-      - IMAGEPROXY_SCALEUP=true
+    imageproxy-cache:
+        image: ghcr.io/willnorris/imageproxy:main
+        ports:
+            - 8087:8080
+        environment:
+            - IMAGEPROXY_CACHE=memory:100:24h
+            - IMAGEPROXY_SCALEUP=true
 
-  weserv-images:
-    build:
-      context: .
-      dockerfile: ./.docker/weserv-images/Dockerfile
-    ports:
-      - 8088:80
-    restart: always
+    weserv-images:
+        image: ghcr.io/weserv/images:5.x
+        volumes:
+            - ./.docker/mort/mort.yml:/etc/mort/mort.yml
+        ports:
+            - 8088:80
+        restart: always
 
-  weserv-images-cache:
-    build:
-      context: .
-      dockerfile: ./.docker/weserv-images/Dockerfile.cache
-    ports:
-      - 8089:80
-    restart: always
+    weserv-images-cache:
+        image: ghcr.io/weserv/images:5.x
+        volumes:
+            - ./.docker/weserv-images/imagesweserv-no-cache.conf:/etc/nginx/imagesweserv.conf
+        ports:
+            - 8089:80
+        restart: always
 
-  flyimg:
-    build:
-      context: .
-      dockerfile: ./.docker/flyimg/Dockerfile
-    ports:
-      - 8090:80
-    restart: always
+    flyimg:
+        image: flyimg/flyimg-build:1.2.3
+        volumes:
+            - ./.docker/flyimg/parameters.yml:/var/www/html/config/parameters.yml
+        ports:
+            - 8090:80
+        restart: always
 
-  mort:
-    build:
-      context: .
-      dockerfile: ./.docker/mort/Dockerfile
-    ports:
-      - 8091:80
-    restart: always
+    flyimg-cache:
+        image: flyimg/flyimg-build:1.2.3
+        volumes:
+            - ./.docker/flyimg/parameters_cache.yml:/var/www/html/config/parameters.yml
+        ports:
+            - 8091:80
+        restart: always
 
-  mort-cache:
-    build:
-      context: .
-      dockerfile: ./.docker/mort/Dockerfile.cache
-    ports:
-      - 8092:80
-    restart: always
+    mort:
+        image: ghcr.io/aldor007/mort:0.29.6
+        volumes:
+            - ./.docker/mort/mort.yml:/etc/mort/mort.yml
+        ports:
+            - 8092:80
+        restart: always
 
-networks:
-  default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.10.10.0/24
+    mort-cache:
+        image: ghcr.io/aldor007/mort:0.29.6
+        volumes:
+            - ./.docker/mort/mort_cache.yml:/etc/mort/mort.yml
+        ports:
+            - 8093:80
+        restart: always
