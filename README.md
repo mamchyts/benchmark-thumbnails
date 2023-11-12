@@ -65,18 +65,18 @@ Vulnerabilities:
 ```
 
 
-## Test results (latency)
+## Test results (latency 90% + rps)
 
 |                                | 320x240            | 854x480            | 1280x720           | 1920x1080           | 3840x2160          |
 | ------------------------------ | ------------------ | ------------------ | ------------------ | ------------------- | ------------------ |
-| imgproxy/imgproxy              | 292.73ms, 3.21rps  | 374.74ms, 2.290rps | 396.28ms, 2.11rps  | 599.33ms, 1.07rps   | 1530.99ms, 0.65rps |
-| thumbor/thumbor                | 723.61ms, 0.99rps  | 732.16ms, 1.00rps  | 836.88ms, 0.93rps  | 927.30ms, 0.73rps   | 1370.30ms, 0.52rps |
-| thumbor/thumbor (cache)        | 11.64ms, 352.08rps | 10.24ms, 327.51rps | 9.90ms, 313.53rps  | 11.54ms, 267.77rps  | 21.53ms, 158.29rps |
-| h2non/imaginary                | 347.44ms, 2.38rps  | 390.94ms, 2.07rps  | 600.91ms, 1.14rps  | 527.40ms, 1.45rps   | 1020.37ms, 0.93rps |
-| thoas/picfit                   | 1910.0ms, 0.47rps  | 1990.0ms, 0.43rps  | 2120.0ms, 0.43rps  | 2550.0ms, 0.38rps   | 2750.0ms, 0.25rps  |
-| thoas/picfit (cache)           | 1.69ms, 603.00rps  | 1.91ms, 534.65rps  | 3.69ms, 266.46rps  | 5.18ms, 193.38rps   | 18.42ms, 54.04rps  |
-| willnorris/imageproxy          | 1910.0ms, 0.50rps  | 1950.0ms, 0.45rps  | 2220.0ms, 0.42rps  | 2650.0ms, 0.35rps   | 2850.0ms, 0.22rps  |
-| willnorris/imageproxy (cache)  | 1.01ms, 1031.57rps | 1.35ms, 785.80rps  | 1.93ms, 527.64rps  | 3.20ms, 314.53rps   | 10.56ms, 98.69rps  |
+| imgproxy/imgproxy              | 233.58ms, 4.91rps  | 245.40ms, 4.66rps  | 303.66ms, 3.98rps  | 326.57ms, 3.58rps   | 502.41ms, 2.30rps  |
+| thumbor/thumbor                | 551.96ms, 2.06rps  | 572.13ms, 2.00rps  | 613.17ms, 1.86rps  | 831.02ms, 1.53rps   | 874.71ms, 1.21rps  |
+| thumbor/thumbor (cache)        | 1.56ms, 815.73rps  | 1.61ms, 797.37rps  | 1.73ms, 745.84rps  | 1.99ms, 648.41rps   | 3.81ms, 343.25rps  |
+| h2non/imaginary                | 348.17ms, 1.72rps  | 428.24ms, 1.45rps  | 604.46ms, 1.90rps  | 553.59ms, 2.08rps   | 885.33ms, 1.07rps  |
+| thoas/picfit                   | 1250.0ms, 0.88rps  | 1400.0ms, 0.83rps  | 1420.0ms, 0.77rps  | 1650.0ms, 0.67rps   | 1850.0ms, 0.43rps  |
+| thoas/picfit (cache)           | 1.06ms, 1249.82rps | 1.65ms, 917.67rps  | 3.88ms, 635.90rps  | 4.89ms, 398.98rps   | 10.00ms, 120.1rps  |
+| willnorris/imageproxy          | 1320.0ms, 0.85rps  | 1350.0ms, 0.82rps  | 1440.0ms, 0.75rps  | 1740.0ms, 0.63rps   | 2250.0ms, 0.40rps  |
+| willnorris/imageproxy (cache)  | 0.61ms, 2769.57rps | 0.67ms, 2468.00rp  | 0.94ms, 1537.28rps | 1.38ms, 996.43rps   | 3.74ms, 337.05rps  |
 | weserv/images                  | 260.70ms, 3.58rps  | 316.66ms, 2.83rps  | 411.36ms, 2.21rps  | 820.88ms, 1.21rps   | 1270.0ms, 0.77rps  |
 | weserv/images (cache)          | 2.54ms, 2623.31rps | 3.05ms, 2210.06rps | 3.11ms, 2697.24rps | 21.00ms, 1759.18rps | 49.57ms, 946.39rps |
 | flyimg/flyimg                  |                    |                    |                    |                     |                    |
