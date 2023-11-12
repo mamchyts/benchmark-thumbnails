@@ -112,11 +112,11 @@ Vulnerabilities:
 - **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8082/unsafe/3840x2160/https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
 
 ### [h2non/imaginary](https://github.com/h2non/imaginary):
-- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=320&height=240&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=854&height=480&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1280&height=720&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1920&height=1080&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
-- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=3840&height=2160&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
+- **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=320&height=240&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **854x480**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=854&height=480&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1280x720**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1280&height=720&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **1920x1080**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=1920&height=1080&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
+- **3840x2160**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8083/enlarge?width=3840&height=2160&url=https://raw.githubusercontent.com/mamchyts/benchmark-thumbnails/master/pexels-magda-ehlers.jpg'`
 
 ### [thoas/picfit](https://github.com/thoas/picfit):
 - **320x240**: `wrk -t1 -c1 -d60s --latency 'http://localhost:8084/display?w=320&h=240&op=thumbnail&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmamchyts%2Fbenchmark-thumbnails%2Fmaster%2Fpexels-magda-ehlers.jpg'`
