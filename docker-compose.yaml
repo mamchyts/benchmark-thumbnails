@@ -1,25 +1,34 @@
 services:
     imgproxy:
-        image: darthsim/imgproxy:v3.20.0
+        image: darthsim/imgproxy:v3.26.0
         ports:
             - 8080:8080
-        restart: always
+        restart: on-failure
         environment:
             - IMGPROXY_MAX_SRC_RESOLUTION=18.0
 
-    thumbor:
-        image: ghcr.io/minimalcompact/thumbor:7.6.0
+    imaginary:
+        image: h2non/imaginary:1.2.4
+        command: -enable-url-source
         ports:
             - 8081:80
-        restart: always
+        restart: on-failure
+        environment:
+            PORT: 80
+
+    thumbor:
+        image: ghcr.io/minimalcompact/thumbor:7.7.4
+        ports:
+            - 8082:80
+        restart: on-failure
         environment:
             - ALLOW_UNSAFE_URL=True
 
     thumbor-cache:
-        image: ghcr.io/minimalcompact/thumbor:7.6.0
+        image: ghcr.io/minimalcompact/thumbor:7.7.4
         ports:
-            - 8082:80
-        restart: always
+            - 8083:80
+        restart: on-failure
         environment:
             - ALLOW_UNSAFE_URL=True
             - RESULT_STORAGE_EXPIRATION_SECONDS=3600
@@ -27,22 +36,13 @@ services:
             - RESULT_STORAGE_STORES_UNSAFE=True
             - RESULT_STORAGE=thumbor.result_storages.file_storage
 
-    imaginary:
-        image: h2non/imaginary:1.2.4
-        command: -enable-url-source
-        ports:
-            - 8083:80
-        restart: always
-        environment:
-            PORT: 80
-
     picfit:
         build:
             context: .
             dockerfile: ./.docker/picfit/Dockerfile
         ports:
             - 8084:3001
-        restart: always
+        restart: on-failure
         environment:
             - PICFIT_CONFIG_PATH=/config.json
 
@@ -52,7 +52,7 @@ services:
             dockerfile: ./.docker/picfit/Dockerfile
         ports:
             - 8085:3001
-        restart: always
+        restart: on-failure
         environment:
             - PICFIT_CONFIG_PATH=/config_cache.json
 
@@ -60,7 +60,7 @@ services:
         image: ghcr.io/willnorris/imageproxy:main
         ports:
             - 8086:8080
-        restart: always
+        restart: on-failure
         environment:
             - IMAGEPROXY_SCALEUP=true
 
@@ -78,29 +78,29 @@ services:
             - ./.docker/weserv-images/imagesweserv-no-cache.conf:/etc/nginx/imagesweserv.conf
         ports:
             - 8088:80
-        restart: always
+        restart: on-failure
 
     weserv-images-cache:
         image: ghcr.io/weserv/images:5.x
         ports:
             - 8089:80
-        restart: always
+        restart: on-failure
 
     flyimg:
-        image: flyimg/flyimg-build:1.2.3
+        image: flyimg/flyimg:1.5.0
         volumes:
             - ./.docker/flyimg/parameters.yml:/var/www/html/config/parameters.yml
         ports:
             - 8090:80
-        restart: always
+        restart: on-failure
 
     flyimg-cache:
-        image: flyimg/flyimg-build:1.2.3
+        image: flyimg/flyimg:1.5.0
         volumes:
             - ./.docker/flyimg/parameters_cache.yml:/var/www/html/config/parameters.yml
         ports:
             - 8091:80
-        restart: always
+        restart: on-failure
 
     mort:
         image: ghcr.io/aldor007/mort:0.29.6
@@ -108,7 +108,7 @@ services:
             - ./.docker/mort/mort.yml:/etc/mort/mort.yml
         ports:
             - 8092:80
-        restart: always
+        restart: on-failure
 
     mort-cache:
         image: ghcr.io/aldor007/mort:0.29.6
@@ -116,4 +116,4 @@ services:
             - ./.docker/mort/mort_cache.yml:/etc/mort/mort.yml
         ports:
             - 8093:80
-        restart: always
+        restart: on-failure
