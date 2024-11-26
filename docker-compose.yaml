@@ -5,7 +5,7 @@ services:
             - 8080:8080
         restart: on-failure
         environment:
-            - IMGPROXY_MAX_SRC_RESOLUTION=18.0
+            IMGPROXY_MAX_SRC_RESOLUTION: 18.0
 
     imaginary:
         image: h2non/imaginary:1.2.4
@@ -44,7 +44,7 @@ services:
             - 8084:3001
         restart: on-failure
         environment:
-            - PICFIT_CONFIG_PATH=/config.json
+            PICFIT_CONFIG_PATH: /config.json
 
     picfit-cache:
         build:
@@ -54,7 +54,7 @@ services:
             - 8085:3001
         restart: on-failure
         environment:
-            - PICFIT_CONFIG_PATH=/config_cache.json
+            PICFIT_CONFIG_PATH: /config_cache.json
 
     imageproxy:
         image: ghcr.io/willnorris/imageproxy:main
@@ -62,15 +62,15 @@ services:
             - 8086:8080
         restart: on-failure
         environment:
-            - IMAGEPROXY_SCALEUP=true
+            IMAGEPROXY_SCALEUP: true
 
     imageproxy-cache:
         image: ghcr.io/willnorris/imageproxy:main
         ports:
             - 8087:8080
         environment:
-            - IMAGEPROXY_CACHE=memory:100:24h
-            - IMAGEPROXY_SCALEUP=true
+            IMAGEPROXY_CACHE: memory:100:24h
+            IMAGEPROXY_SCALEUP: true
 
     weserv-images:
         image: ghcr.io/weserv/images:5.x
@@ -87,7 +87,7 @@ services:
         restart: on-failure
 
     flyimg:
-        image: flyimg/flyimg:1.5.0
+        image: flyimg/flyimg:1.7.0
         volumes:
             - ./.docker/flyimg/parameters.yml:/var/www/html/config/parameters.yml
         ports:
@@ -95,7 +95,7 @@ services:
         restart: on-failure
 
     flyimg-cache:
-        image: flyimg/flyimg:1.5.0
+        image: flyimg/flyimg:1.7.0
         volumes:
             - ./.docker/flyimg/parameters_cache.yml:/var/www/html/config/parameters.yml
         ports:
@@ -117,3 +117,28 @@ services:
         ports:
             - 8093:80
         restart: on-failure
+
+    imagor:
+        image: shumc/imagor:1.4.15
+        ports:
+            - 8094:80
+        restart: on-failure
+        environment:
+            PORT: 80
+            IMAGOR_UNSAFE: 1
+
+    imagor-cache:
+        image: shumc/imagor:1.4.15
+        ports:
+            - 8095:80
+        restart: on-failure
+        environment:
+            PORT: 80
+            IMAGOR_UNSAFE: 1
+            FILE_LOADER_BASE_DIR: /tmp/data
+            FILE_STORAGE_BASE_DIR: /tmp/data
+            FILE_STORAGE_MKDIR_PERMISSION: 0755
+            FILE_STORAGE_WRITE_PERMISSION: 0666
+            FILE_RESULT_STORAGE_BASE_DIR: /tmp/data/result
+            FILE_RESULT_STORAGE_MKDIR_PERMISSION: 0755
+            FILE_RESULT_STORAGE_WRITE_PERMISSION: 0666

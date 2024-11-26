@@ -1,13 +1,13 @@
-FROM golang:1.23-bookworm AS builder
+FROM golang:1.23-bookworm as builder
 LABEL stage=builder
 
 ENV REPO=thoas/picfit
 
 RUN apt-get update && apt-get install -y unzip \
-    && wget -O /tmp/picfit.zip https://github.com/thoas/picfit/archive/refs/tags/0.14.0.zip \
+    && wget -O /tmp/picfit.zip https://github.com/thoas/picfit/archive/refs/heads/main.zip \
     && unzip /tmp/picfit.zip -d /tmp/picfit/ \
     && mkdir -p /go/src/github.com/${REPO} \
-    && cp -r /tmp/picfit/picfit-0.14.0/* /go/src/github.com/${REPO}
+    && cp -r /tmp/picfit/picfit-main/* /go/src/github.com/${REPO}
 
 WORKDIR /go/src/github.com/${REPO}
 
