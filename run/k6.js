@@ -132,7 +132,7 @@ for (const project in routes) {
 // init scenarios
 let i = 0;
 let duration = 60;
-let gracefulStop = 10;
+let gracefulStop = 60;
 let scenarios = {}
 for (const project in routes) {
     for (const size in routes[project]) {
