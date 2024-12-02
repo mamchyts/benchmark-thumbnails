@@ -9,59 +9,67 @@ More info about testing [RU]: https://habr.com/ru/post/578282/
 
 ## Test PC info - **DigitalOcean 1CPU/2GB (Premium Intel with NVMe SSD)**
 ```
-root@ubuntu-s-1vcpu-2gb-70gb-intel-fra1-01:/# free -h
+root@ubuntu-s-1vcpu-2gb-70gb-intel-sfo3-01:~# free -h
                total        used        free      shared  buff/cache   available
-Mem:           1.9Gi       198Mi       1.3Gi       4.0Mi       399Mi       1.6Gi
+Mem:           1.9Gi       311Mi       1.4Gi       4.0Mi       320Mi       1.6Gi
 Swap:             0B          0B          0B
 ```
 
 ```
-root@ubuntu-s-1vcpu-2gb-70gb-intel-fra1-01:/# lscpu
-Architecture:            x86_64
-  CPU op-mode(s):        32-bit, 64-bit
-  Address sizes:         40 bits physical, 48 bits virtual
-  Byte Order:            Little Endian
-CPU(s):                  1
-  On-line CPU(s) list:   0
-Vendor ID:               GenuineIntel
-  Model name:            DO-Premium-Intel
-    CPU family:          6
-    Model:               85
-    Thread(s) per core:  1
-    Core(s) per socket:  1
-    Socket(s):           1
-    Stepping:            7
-    BogoMIPS:            4988.27
-    Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx pdpe1gb
-                          rdtscp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 ss
-                         e4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fau
-                         lt invpcid_single ssbd ibrs ibpb ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase bmi1 avx2 smep
-                         bmi2 erms invpcid rdseed adx smap clflushopt clwb xsaveopt xsavec xgetbv1 arat pku ospke arch_capabilities
+root@ubuntu-s-1vcpu-2gb-70gb-intel-sfo3-01:~# lscpu
+Architecture:             x86_64
+  CPU op-mode(s):         32-bit, 64-bit
+  Address sizes:          40 bits physical, 48 bits virtual
+  Byte Order:             Little Endian
+CPU(s):                   1
+  On-line CPU(s) list:    0
+Vendor ID:                GenuineIntel
+  BIOS Vendor ID:         QEMU
+  Model name:             DO-Premium-Intel
+    BIOS Model name:      pc-i440fx-6.1  CPU @ 2.0GHz
+    BIOS CPU family:      1
+    CPU family:           6
+    Model:                85
+    Thread(s) per core:   1
+    Core(s) per socket:   1
+    Socket(s):            1
+    Stepping:             7
+    BogoMIPS:             3999.99
+    Flags:                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush
+                           mmx fxsr sse sse2 syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtop
+                          ology cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2
+                          x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lah
+                          f_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb ibrs_enhanced tpr_shadow flex
+                          priority ept vpid ept_ad fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx s
+                          map clflushopt clwb xsaveopt xsavec xgetbv1 arat vnmi pku ospke arch_capabiliti
+                          es
 Virtualization features:
-  Virtualization:        VT-x
-  Hypervisor vendor:     KVM
-  Virtualization type:   full
+  Virtualization:         VT-x
+  Hypervisor vendor:      KVM
+  Virtualization type:    full
 Caches (sum of all):
-  L1d:                   32 KiB (1 instance)
-  L1i:                   32 KiB (1 instance)
-  L2:                    4 MiB (1 instance)
+  L1d:                    32 KiB (1 instance)
+  L1i:                    32 KiB (1 instance)
+  L2:                     4 MiB (1 instance)
 NUMA:
-  NUMA node(s):          1
-  NUMA node0 CPU(s):     0
+  NUMA node(s):           1
+  NUMA node0 CPU(s):      0
 Vulnerabilities:
-  Gather data sampling:  Unknown: Dependent on hypervisor status
-  Itlb multihit:         KVM: Mitigation: VMX disabled
-  L1tf:                  Not affected
-  Mds:                   Not affected
-  Meltdown:              Not affected
-  Mmio stale data:       Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
-  Retbleed:              Mitigation; Enhanced IBRS
-  Spec rstack overflow:  Not affected
-  Spec store bypass:     Mitigation; Speculative Store Bypass disabled via prctl and seccomp
-  Spectre v1:            Mitigation; usercopy/swapgs barriers and __user pointer sanitization
-  Spectre v2:            Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence
-  Srbds:                 Not affected
-  Tsx async abort:       Not affected
+  Gather data sampling:   Unknown: Dependent on hypervisor status
+  Itlb multihit:          KVM: Mitigation: VMX disabled
+  L1tf:                   Not affected
+  Mds:                    Not affected
+  Meltdown:               Not affected
+  Mmio stale data:        Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown
+  Reg file data sampling: Not affected
+  Retbleed:               Mitigation; Enhanced IBRS
+  Spec rstack overflow:   Not affected
+  Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+  Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIB
+                          RS SW sequence; BHI SW loop, KVM SW loop
+  Srbds:                  Not affected
+  Tsx async abort:        Not affected
 ```
 
 
