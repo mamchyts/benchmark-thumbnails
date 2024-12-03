@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "cSpell.words": [
+            "flyimg",
+            "imageproxy",
+            "imagor",
+            "imgproxy",
+            "picfit",
+            "thumbor",
+            "weserv"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Listen for Xdebug",
+                "type": "php",
+                "request": "launch",
+                "port": 9003,
+                "pathMappings": {
+                    "/var/www/html": "${workspaceFolder}/"
+                }
+            }
+        ]
+    }
+}
